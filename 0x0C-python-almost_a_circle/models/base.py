@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """Defines a class named Base"""
+
+
 class Base:
     """
     Base class for managing id attribute in all future classes.
-    
+
     Private class attribute:
         __nb_object (int): Number of instantiated Bases.
     """
