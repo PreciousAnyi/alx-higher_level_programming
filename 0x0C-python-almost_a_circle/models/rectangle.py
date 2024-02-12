@@ -84,3 +84,34 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Returns the area value of the
+        Rectangle instance
+        """
+        return self.width * self.height
+
+    def display(self):
+        """prints in stdout the Rectangle
+        instance with the character #
+        """
+        for _ in range(self.y):
+            print()
+        for _ in range(self.height):
+            print(" " * self.x + "#" * self.width)
+
+    def update(self, *args, **kwargs):
+        """assigns a key/value argument to attributes"""
+        if args:
+            attr = [
+                    "id", "width", "height", "x", "y"
+                    ]
+            for i, arg in enumerate(args[:len(attr)]):
+                setattr(self, attr[i], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def __str__(self):
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} " \
+                f"- {self.width}/{self.height}"
