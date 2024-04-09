@@ -11,7 +11,7 @@ if (process.argv.length > 3) {
   process.argv.forEach(element => {
     const parsedElement = parseInt(element);
     if (parsedElement < max && parsedElement > secondBiggest) {
-        secondBiggest = element;
+      secondBiggest = element;
     }
   });
 }
