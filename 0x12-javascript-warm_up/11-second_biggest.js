@@ -3,15 +3,15 @@ let max = 0;
 let secondBiggest = 0;
 if (process.argv.length > 3) {
   process.argv.forEach(element => {
-    if (element > max) {
-      max = element;
+    const parsedElement = parseInt(element);
+    if (parsedElement > max) {
+      max = parsedElement;
     }
   });
   process.argv.forEach(element => {
-    if (element < max) {
-      if (element > secondBiggest) {
+    const parsedElement = parseInt(element);
+    if (parsedElement < max && parsedElement > secondBiggest) {
         secondBiggest = element;
-      }
     }
   });
 }
