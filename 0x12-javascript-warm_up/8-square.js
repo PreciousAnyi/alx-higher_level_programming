@@ -6,7 +6,7 @@ if (isNaN(parsedSize)) {
 } else {
   if (parsedSize > 0) {
     for (let i = 0; i < parsedSize; i++) {
-      console.log(`${'x'.repeat(parsedSize)}`);
+      console.log(`${'X'.repeat(parsedSize)}`);
     }
   }
 }
