@@ -15,4 +15,4 @@ if (process.argv.length > 3) {
     }
   });
 }
-console.log(toString(secondBiggest));
+console.log(secondBiggest);
