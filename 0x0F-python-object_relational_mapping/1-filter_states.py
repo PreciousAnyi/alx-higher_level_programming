@@ -41,6 +41,8 @@ def filter_states(username, password, db_name):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        sys.exit(1)
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
