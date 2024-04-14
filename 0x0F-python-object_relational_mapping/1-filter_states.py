@@ -37,7 +37,8 @@ def filter_states(username, password, db_name):
                        " ORDER BY id ASC")
         states = cursor.fetchall()
         for state in states:
-            print(state)
+            if state[1][0] == 'N':
+                print(state)
         cursor.close()
         db.close()
     except Exception as e:
