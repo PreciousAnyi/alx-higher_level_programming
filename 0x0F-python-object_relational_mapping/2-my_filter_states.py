@@ -24,7 +24,8 @@ def filter_states(username, password, db_name, state_name):
         cursor.execute(query)
         states = cursor.fetchall()
         for state in states:
-            print(state)
+            if state[1] == state_name:
+                print(state)
         cursor.close()
         db.close()
     except Exception as e:
