@@ -19,8 +19,9 @@ def filter_states(username, password, db_name, state_name):
         db = MySQLdb.connect(host="localhost", port=3306, user=username,
                              passwd=password, db=db_name)
         cursor = db.cursor()
-        query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-        cursor.execute(query, (state_name,))
+        query = ("SELECT * FROM states WHERE name = '{:s}'"
+                 " ORDER BY id ASC").format(state_name)
+        cursor.execute(query)
         states = cursor.fetchall()
         for state in states:
             print(state)
