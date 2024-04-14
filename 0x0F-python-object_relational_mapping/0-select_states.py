@@ -28,7 +28,7 @@ def get_states(username, password, db_name):
         db_name (str): Name of the database
     """
     db = MySQLdb.connect(host="localhost", port=3306, user=username,
-                          passwd=password, db=db_name)
+                         passwd=password, db=db_name)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM states ORDER BY ID ASC")
     states = cursor.fetchall()
