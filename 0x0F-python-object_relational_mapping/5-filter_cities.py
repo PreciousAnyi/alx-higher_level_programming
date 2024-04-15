@@ -22,15 +22,17 @@ def filter_cities(username, password, db_name, state_name):
         db = MySQLdb.connect(host="localhost", port=3306, user=username,
                              passwd=password, db=db_name)
         cursor = db.cursor()
-        query = "SELECT name FROM cities WHERE state_id = \
-                (SELECT id FROM states WHERE \
-                name = %s) ORDER BY id ASC"
-        cursor.execute(query, (state_name,))
-        cities = [row[0] for row in cursor.fetchall()]
-        if cities:
-            print(", ".join(cities))
-        else:
-            sys.exit(1)
+        cursor.execute('SELECT city.name, state.name\
+                        FROM cities as city\
+                        INNER JOIN states as state\
+                        ON city.state_id = state.id\
+                        ORDER BY city.id ASC;')
+        cities = cursor.fetchall()
+        cities_list = []
+        for city in cities:
+            if city[1] == state_name:
+                cities_list.append(city[0])
+        print(", ".join(list(dict.fromkeys(cities_list))))
         cursor.close()
         db.close()
     except MySQLdb.Error as e:
