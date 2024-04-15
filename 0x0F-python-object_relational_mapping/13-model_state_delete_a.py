@@ -24,8 +24,8 @@ def delete_states_with_a(username, password, db_name):
                            .format(username, password, db_name))
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).all()
-    for state in states:
+    states_with_a = session.query(State).filter(State.name.like('%a%')).all()
+    for state in states_with_a:
         if 'a' in state.name:
             session.delete(state)
     session.commit()
