@@ -20,7 +20,7 @@ def fetch_cities_by_state(username, password, db_name):
     for city, state in session.query(City, State)\
             .filter(City.state_id == State.id)\
             .order_by(City.id):
-        print("{}: ({}) {}".format(city.state.name, city.id, city.name))
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
     session.close()
 
 
