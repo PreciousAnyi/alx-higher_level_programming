@@ -24,6 +24,8 @@ def fetch_first_state(username, password, db_name):
     first_state = session.query(State).order_by(State.id).first()
     if first_state:
         print("{}: {}".format(first_state.id, first_state.name))
+    else:
+        print("Nothing")
     session.close()
 
 
