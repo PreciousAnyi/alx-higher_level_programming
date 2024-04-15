@@ -16,8 +16,10 @@ def fetch_cities_by_state(username, password, db_name):
                            .format(username, password, db_name))
     Session = sessionmaker(bind=engine)
     session = Session()
-    cities = session.query(City).order_by(City.id).all()
-    for city in cities:
+
+    for city, state in session.query(City, State)\
+            .filter(City.state_id == State.id)\
+            .order_by(City.id):
         print("{}: ({}) {}".format(city.state.name, city.id, city.name))
     session.close()
 
